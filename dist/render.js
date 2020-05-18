@@ -1,18 +1,21 @@
 class Render {
-    constructor(){
+    constructor() {
 
     }
-    renderData(restorant){
-    const source = $('#restorant-template').html()
-    const template = Handlebars.compile(source)
-    const newHTML = template(/* {city:city} */)
-    $('').empty()
-    $('').append(newHTML)
-  
-}
+    renderRestaurantsData(restaurants) {
+        const source = $('#restaurant-template').html()
+        const template = Handlebars.compile(source)
+        const newHTML = template({ restaurants })
+        $('').empty()
+        $('').append(newHTML)
+    }
+
+    renderTripsData(trips) {
+        // code ..
+    }
 
 }
 
-const render= new Render
+const render = new Render
 
 
