@@ -6,7 +6,7 @@ class RestaurantsManager {
   }
 
   async getRestaurantsData(cityName) {
-    this.restaurants= await get(`/restaurants/${cityName}`)
+    this.restaurants= await $.get(`/restaurants/${cityName}`)
   }
 
   filterRestaurants(filter) {

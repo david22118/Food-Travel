@@ -1,4 +1,4 @@
-#search{
+#city-input{
     background-color: #74b9ff;
     font-family: 'Major Mono Display', monospace;
     font-size: 25px;
@@ -12,6 +12,6 @@
   background-color: #0984e3;
 }
 
-#material{
+#search-btn{
  font-size: 50px;
 }

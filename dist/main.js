@@ -7,14 +7,15 @@ const handleSearch = async function (cityName, filter) {
     //get restaurants then filter ...
     await restaurantsManager.getRestaurantsData(cityName)
     render.renderRestaurantsData(restaurantsManager.restaurants)
+    console.log(restaurantsManager.restaurants)
 }
 
 
-$("#searchBtn").on("click", function(){
-    const cityName = $("#input").val()
+$("#search-btn").on("click", function(){
+    const cityName = $("#city-input").val().toLowerCase()
     handleSearch(cityName, "")
     
-    $("#input").val("")
+    $("#city-input").val("")
 })
 
 

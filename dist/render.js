@@ -6,8 +6,8 @@ class Render {
         const source = $('#restaurant-template').html()
         const template = Handlebars.compile(source)
         const newHTML = template({ restaurants })
-        $('').empty()
-        $('').append(newHTML)
+        $('#restaurants').empty()
+        $('#restaurants').append(newHTML)
     }
 
     renderTripsData(trips) {
@@ -16,9 +16,6 @@ class Render {
 
 }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 
 
