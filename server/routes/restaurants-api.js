@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const request = require("request");
+const ObjectId = require('mongoose').Types.ObjectId;
 const Location = require('../model/location')
 const Restaurant = require('../model/restaurant')
 const Address = require('../model/address')
 const Rating = require('../model/rating')
+const Trip = require('../model/trip')
 const googleApiKey = "AIzaSyBsrXjF-AT_Jk5UubAwSYcj2bO_XRbA3Xo";
 
 router.get('/restaurants/:cityName', async function (req, res) {
@@ -12,15 +14,60 @@ router.get('/restaurants/:cityName', async function (req, res) {
     const cityId = await getCityId(cityName)
     const location = await getCityLocationById(cityId)
     const restaurants = await getRestaurantsByLocation(location)
-
     res.send(restaurants)
+})
+
+router.post('/restaurant/:tripId', function (req, res) {
+    const restaurantData = req.body
+    const tripId = req.params.tripId
+    const newRestaurant = new Restaurant({
+        restaurantName: restaurantData.restaurantName,
+        location: new Location({
+            longitude: restaurantData.location.longitude,
+            latitude: restaurantData.location.latitude,
+            cityId: restaurantData.location.cityId
+        }),
+        address: new Address({
+            street: restaurantData.address.street,
+            postalCode: restaurantData.address.postalCode,
+            locality: restaurantData.address.locality,
+            country: restaurantData.address.country
+        }),
+        rating: new Rating({
+            ratingValue: restaurantData.rating.ratingValue,
+            reviewCount: restaurantData.rating.ratingValue
+        }),
+        photo: restaurantData.photo,
+        marketingOffer: restaurantData.marketingOffer,
+        cuisine: restaurantData.cuisine
+    })
+    newRestaurant.save(function (error, restaurant) {
+        Trip.findById({ _id: ObjectId(tripId) }, function (error, trip) {
+            trip.restaurants.push(restaurant)
+            trip.save(function (error, t) {
+                res.send(t)
+            })
+        })
+    })
+})
+router.delete('/restaurant/:restaurantId/:tripId', function (req, res) {
+    const restaurantId = req.params.restaurantId
+    const tripId = req.params.tripId
+    Trip.find({ _id: tripId }, function (trip) {
+        const i = trip.restaurants.findIndex(r => r._id == restaurantId)
+        trip.restaurants.splice(i, 1)
+        trip.save(function (t) {
+            Trip.find({}, function (trips) {
+                res.send(trips)
+            })
+        })
+    })
 })
 
 function getCityId(cityName) {
     const apiURL = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${cityName}&inputtype=textquery&key=${googleApiKey}`
     return new Promise((resolve, reject) => {
         request(apiURL, function (error, response, body) {
-            //console.log(response)
             const id = JSON.parse(body).candidates[0].place_id
             return resolve(id)
         })
@@ -86,7 +133,7 @@ function getRestaurantsByLocation(location) {
                     }),
                     photo: r.mainPhotoSrc,
                     marketingOffer: r.marketingOffer ? r.marketingOffer.title : '',
-                    cuisine: r.servesCuisine
+                    cuisine: r.servesCuisine ? r.servesCuisine : ''
                 })
                 return restaurant
             })
