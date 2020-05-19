@@ -1,10 +1,12 @@
+import { get } from "mongoose"
+
 class RestaurantsManager {
   constructor() {
     this.restaurants = []
   }
 
   async getRestaurantsData(cityName) {
-    /// code ...
+    this.restaurants= await get(`/restaurants/${cityName}`)
   }
 
   filterRestaurants(filter) {
