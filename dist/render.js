@@ -16,6 +16,5 @@ class Render {
 
 }
 
-const render = new Render
 
 
