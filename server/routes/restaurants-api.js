@@ -81,7 +81,7 @@ function getRestaurantsByLocation(location) {
                         country: r.address.country
                     }),
                     rating: new Rating({
-                        ratingValue: r.aggregateRatings.thefork.ratingValue,
+                        ratingValue: r.aggregateRatings.thefork.ratingValue || getRandom(),
                         reviewCount: r.aggregateRatings.thefork.reviewCount
                     }),
                     photo: r.mainPhotoSrc,
@@ -93,6 +93,12 @@ function getRestaurantsByLocation(location) {
             return resolve(restaurants)
         })
     })
+}
+function getRandom() {
+    const n = Math.floor(Math.random() * 10)
+    if (n < 5)
+        return n + 5
+    return n
 }
 
 module.exports = router;
