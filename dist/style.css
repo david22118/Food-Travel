@@ -5,12 +5,10 @@
     color: white;
     font-weight: bold;
 }
-#close{
+#clear-city-input{
     font-weight: bold;
 }
-#first{
-  background-color: #0984e3;
-}
+
 
 #search-btn{
  font-size: 50px;
