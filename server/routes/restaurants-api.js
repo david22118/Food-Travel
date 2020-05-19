@@ -9,10 +9,10 @@ const googleApiKey = "AIzaSyBsrXjF-AT_Jk5UubAwSYcj2bO_XRbA3Xo";
 router.get('/restaurants/:cityName', async function (req, res) {
     const cityName = req.params.cityName
     const cityId = await getCityId(cityName)
+    const location = await getCityLocationById(cityId)
 
 
-    console.log(a);
-    res.send(a)
+    res.send(location)
 })
 
 function getCityId(cityName) {
@@ -25,6 +25,7 @@ function getCityId(cityName) {
         })
     })
 }
+
 function getCityLocationById(cityId) {
     const locationsApiUrl = {
         method: 'GET',
@@ -35,12 +36,18 @@ function getCityLocationById(cityId) {
             'x-rapidapi-key': '9c978dd43cmsh1b3d31ae1936130p18cfafjsn625da2ea9f8a',
             useQueryString: true
         }
-    };
-    request(locationsApiUrl, function (error, response, body) {
-        if (error) throw new Error(error);
-        console.log(body);
-    });
+    }
+    return new Promise((resolve, reject) => {
+        request(locationsApiUrl, function (error, response, body) {
+            if (error) throw new Error(error);
+            const coordinates = JSON.parse(body).coordinates
+            const cityId = JSON.parse(body).id_city
+            const location = { lat: coordinates.latitude, long: coordinates.longitude, cityId: cityId }
+            console.log(coordinates, cityId);
+            return resolve(location)
+        })
+    })
+
 }
-//getCityLocationById('ChIJdd4hrwug2EcRmSrV3Vo6llI')
 
 module.exports = router;

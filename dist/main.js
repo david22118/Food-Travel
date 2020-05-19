@@ -13,4 +13,3 @@ const handleSearch = async function (cityName, filter) {
 
 
 
-
