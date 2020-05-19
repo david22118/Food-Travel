@@ -21,5 +21,5 @@ app.use('/', restaurantsApi)
 const port = 8080
 
 app.listen(port, function () {
-  console.log(`serever is running on port ${port}`);
+  console.log(`server is running on port ${port}`);
 });

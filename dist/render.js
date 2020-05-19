@@ -16,5 +16,9 @@ class Render {
 
 }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
 
 

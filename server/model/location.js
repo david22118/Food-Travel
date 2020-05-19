@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const LocationSchema = new Schema({
-    longitude:  String,
+    longitude: String,
     latitude: String,
-    cityId:String,
+    cityId: String
 });
 
 const Location = mongoose.model("Location", LocationSchema);

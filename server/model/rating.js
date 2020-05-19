@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const RatingSchema = new Schema({
-    ratingValue:  Number,
+    ratingValue: Number,
     reviewCount: Number
 });
 
