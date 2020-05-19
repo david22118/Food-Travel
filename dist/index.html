@@ -22,12 +22,21 @@
 </head>
 
 <body>
-
-
-      <input id="input" type="text"><button id="searchBtn"></button>
-
-      <div id="restaurants"></div>
-
+      <div class="row">
+            <div class="col s12">
+      <nav>
+            <div class="nav-wrapper">
+              <form>
+                <div class="input-field">
+                  <input placeholder="Where ?"   id="search" type="search" required>
+                  <label class="label-icon" for="search"><i id="close" class="material-icons">close</i></label>
+                  <i id="material"  class="material-icons">local_dining</i>
+                </div>
+              </form>
+            </div>
+          </nav>
+            </div>
+      </div>
   <script id="restaurant-template"
           type="text/x-handlebars-template"></script>
 
