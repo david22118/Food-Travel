@@ -7,4 +7,10 @@ const axios = require("axios");
 const googleKey = "AIzaSyBsrXjF-AT_Jk5UubAwSYcj2bO_XRbA3Xo";
 
 
+router.get('/restaurants/:cityName', async function(req, res){
+    const cityName = req.params.cityName
+    restaurants = []
+    res.send(restaurants)
+})
+
 module.exports = router;
