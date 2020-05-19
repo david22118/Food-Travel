@@ -1,15 +1,74 @@
 #city-input{
-    background-color: #74b9ff;
-    font-family: 'Major Mono Display', monospace;
-    font-size: 25px;
+    background-color:#4bcffa;
+    font-family: 'Lora', serif;
+    font-size: 15px;
     color: white;
     font-weight: bold;
+    
 }
 #clear-city-input{
     font-weight: bold;
+   
 }
 
 
 #search-btn{
- font-size: 50px;
+ font-size: 30px;
 }
+
+p{
+    font-family: 'Lora', serif;
+    font-weight: bold;
+}
+option{
+    font-family: 'Lora', serif;
+}
+
+.browser-default{
+    cursor: pointer;
+}
+
+#filter{
+    font-family: 'Lora', serif;
+    background-color: #0fbcf9;
+}
+
+
+#cuisines{
+
+    border: 1px solid #000;
+    border-radius: 12px;
+}
+
+#rating{
+    border: 1px solid #000;
+    border-radius: 12px;
+
+}
+
+#discount{
+    color: black;
+    font-family: 'Lora', serif;
+}
+
+#discount-box{
+    border: 1px solid #000;
+    
+}
+
+#pecture{
+
+    height: 200px;
+    width: 200px;
+}
+/* body{
+    
+    background-image: url("pecture2.jpg");
+    ;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+
+} */

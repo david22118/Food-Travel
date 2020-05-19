@@ -1,136 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food-Travel</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0" />
-  <title>Food-Travel</title>
-  <link href="style.css"
-        rel="stylesheet"
-        type="text/css" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet" />
-  <link rel="stylesheet"
-        href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-        crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap"
-        rel="stylesheet" />
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-</head>
-
-<body>
-  <div class="row">
-    <div class="col s12">
-      <nav>
-        <div class="nav-wrapper">
-          <form>
-            <div class="input-field">
-              <input placeholder="Where ?"
-                     id="city-input"
-                     type="search"
-                     required />
-              <label class="label-icon"
-                     for="city-input"><i id="clear-city-input"
-                   class="material-icons">close</i></label>
-              <i id="search-btn"
-                 class="material-icons">local_dining</i>
-            </div>
-          </form>
-        </div>
-      </nav>
-    </div>
-    <div class="input-field col s4"
-         id="filter-options">
-      <select class="browser-default"
-              name="cuisines"
-              id="cuisines-list">
-        <option value=""
-                disabled
-                selected>Cuisine</option>
-        <option value="American">American</option>
-        <option value="Asian">Asian</option>
-        <option value="Contemporary cuisine">Contemporary cuisine</option>
-        <option value="European">European</option>
-        <option value="Fine Dining">Fine Dining</option>
-        <option value="French">French</option>
-        <option value="Fusion">Fusion</option>
-        <option value="German">German</option>
-        <option value="Indian">Indian</option>
-        <option value="International">International</option>
-        <option value="Italian">Italian</option>
-        <option value="Mediterranean">Mediterranean</option>
-        <option value="Mexican">Mexican</option>
-        <option value="Middle Eastern">Middle Eastern</option>
-        <option value="Seafood">Seafood</option>
-        <option value="South American">South American</option>
-        <option value="Traditional cuisine">Traditional cuisine</option>
-        <option value="Turkish">Turkish</option>
-        <option value="Vegetarian">Vegetarian</option>
-      </select>
-    </div>
-    <div class="input-field col s4">
-      <select class="browser-default"
-              name="rating"
-              id="rating-list">
-        <option value=""
-                disabled
-                selected>Rating</option>
-        <option value="10">10</option>
-        <option value="9">9</option>
-        <option value="8">8</option>
-        <option value="7">7</option>
-        <option value="6">6</option>
-        <option value="5">5</option>
-        <option value="4">4</option>
-        <option value="3">3</option>
-        <option value="2">2</option>
-        <option value="1">1</option>
-        <label>Materialize Select</label>
-      </select>
-    </div>
-    <div class="input-field col s2">
-      <p>
-        <label>
-          <input type="checkbox"
-                 class="filled-in"
-                 id="discountChecked" />
-          <span>Has Discount</span>
-        </label>
-      </p>
-    </div>
-    <div class="input-field col s2">
-      <button class="btn waves-effect waves-light"
-              type="submit"
-              name="action"
-              id="filter-btn">filter
-        <i class="material-icons right">filter_list</i>
-      </button>
-    </div>
-  </div>
-
-
-  <div id="restaurants"></div>
-
-
-  <script id="restaurant-template"
-          type="text/x-handlebars-template">
-      {{#each restaurants}}
-      <div class="restaurant">
-            <p>{{restaurantName}}</p>
+  <body>
+    <div id="first" class="row">
+      <div     class="col s12">
+        <nav>
+          <div id="all" class="nav-wrapper">
+            <form>
+              <div class="input-field">
+                <input
+                  placeholder="Where ?"
+                  id="city-input"
+                  type="search"
+                  required
+                />
+                <label class="label-icon" for="city-input"
+                  ><i id="clear-city-input" class="material-icons"
+                    >close</i
+                  ></label
+                >
+                <i id="search-btn" class="material-icons">local_dining</i>
+              </div>
+            </form>
+          </div>
+        </nav>
       </div>
+      <div  class="input-field col s3" id="filter-options">
+        <select id="cuisines" class="browser-default" name="cuisines" id="cuisines-list">
+          <option value="" disabled selected>Cuisine</option>
+          <option value="American">American</option>
+          <option value="Asian">Asian</option>
+          <option value="Contemporary cuisine">Contemporary cuisine</option>
+          <option value="European">European</option>
+          <option value="Fine Dining">Fine Dining</option>
+          <option value="French">French</option>
+          <option value="Fusion">Fusion</option>
+          <option value="German">German</option>
+          <option value="Indian">Indian</option>
+          <option value="International">International</option>
+          <option value="Italian">Italian</option>
+          <option value="Mediterranean">Mediterranean</option>
+          <option value="Mexican">Mexican</option>
+          <option value="Middle Eastern">Middle Eastern</option>
+          <option value="Seafood">Seafood</option>
+          <option value="South American">South American</option>
+          <option value="Traditional cuisine">Traditional cuisine</option>
+          <option value="Turkish">Turkish</option>
+          <option value="Vegetarian">Vegetarian</option>
+        </select>
+      </div>
+      <div  class="input-field col s3">
+        <select   id="rating"  class="browser-default" name="rating" id="rating-list">
+          <option value="" disabled selected>Rating</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="5">5</option>
+          <option value="4">4</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+          <option value="1">1</option>
+          <label>Materialize Select</label>
+        </select>
+      </div>
+      <div class="input-field col s3">
+        <p>
+          <label>
+            <input id="discount-box" type="checkbox" class="filled-in" id="discountChecked"/>
+            <span id="discount">Discount</span>
+          </label>
+        </p>
+      </div>
+      
+      <div class="input-field col s3">
+        <button id="filter" class="btn waves-effect waves-light" type="submit" name="action">Filter
+          <i class="material-icons right">filter_list</i>
+        </button>
+      </div>
+    </div>
+
+    <div id="restaurants"></div>
+
+    <script id="restaurant-template" type="text/x-handlebars-template">
+      {{#each restaurants}}
+        <div class="row">
+          <div class="col s6 m6">
+            <div class="card">
+              <div class="card-image">
+                <img id="pecture" src="{{photo}}" />
+                <span class="card-title">
+                  {{restaurantName}}
+                </span>
+                <a
+                  class="btn-floating halfway-fab waves-effect waves-light red"
+                >
+                  <i class="material-icons">
+                    add
+                  </i>
+                </a>
+              </div>
+              <div class="card-content">
+                <p>
+                  {{address.street}},{{address.locality}}
+                </p>
+                <p>
+                  Cuisine: {{cuisine}}
+                </p>
+                <p>
+                  Rating: {{rating.ratingValue}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       {{/each}}
     </script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="handlebars/dist/handlebars.js"></script>
-  <script src="jquery/dist/jquery.js"></script>
-  <script src="restaurants-manager.js"></script>
-  <script src="trips-manager.js"></script>
-  <script src="render.js"></script>
-  <script src="main.js"></script>
-</body>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="handlebars/dist/handlebars.js"></script>
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="restaurants-manager.js"></script>
+    <script src="trips-manager.js"></script>
+    <script src="render.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>
