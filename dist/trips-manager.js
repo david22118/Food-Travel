@@ -4,13 +4,13 @@ class TripsManager {
     }
 
     async getTrips() {
-        //get trips ..
+        return this.trips
     }
 
     async addTrip(trip) {
-        // code ..
+        this.trips.push(trip)
     }
     async removeTrip(tripId) {
-        // code ..
+        this.trips.splice(tripId, 1)
     }
 } 
