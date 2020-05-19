@@ -1,0 +1,17 @@
+#search{
+    background-color: #74b9ff;
+    font-family: 'Major Mono Display', monospace;
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+}
+#close{
+    font-weight: bold;
+}
+#first{
+  background-color: #0984e3;
+}
+
+#material{
+ font-size: 50px;
+}
