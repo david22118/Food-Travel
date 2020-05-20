@@ -22,7 +22,11 @@ router.post('/restaurant/:tripId', function (req, res) {
     const tripId = req.params.tripId
     console.log(restaurantData)
     const newRestaurant = new Restaurant({
+
+    
+
         _id: restaurantData._id,
+
         restaurantName: restaurantData.restaurantName,
         location: new Location({
             longitude: restaurantData.location.longitude,
@@ -58,8 +62,10 @@ router.delete('/restaurant/:restaurantId/:tripId', function (req, res) {
     Trip.findById({ _id: ObjectId(tripId) }, function (error, trip) {
         const i = trip.restaurants.findIndex(r => r._id == restaurantId)
         trip.restaurants.splice(i, 1)
+
         trip.save(function (error, trips) {
             res.send(trips)
+
         })
     })
 })
@@ -118,7 +124,9 @@ function getRestaurantsByLocation(location) {
             const data = JSON.parse(body).data
             const restaurants = data.map(r => {
                 const restaurant = new Restaurant({
+
                     _id: r.id,
+
                     restaurantName: r.name,
                     location: location,
                     address: new Address({

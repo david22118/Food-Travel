@@ -9,10 +9,15 @@ class RestaurantsManager {
 
   async addRestaurantToTrip(restaurantId, tripId) {
     const restaurant = this.restaurants.find(r => r._id == restaurantId)
-
+    
     const trip = await $.post(`restaurant/${tripId}`, restaurant)
   }
-
+   async removeRestaurantFromTrip(restaurantId,tripId){
+    return await $.ajax({
+      url: `/restaurant/${restaurantId}/${tripId}`,
+      method: "DELETE",
+    });
+   }
   filterRestaurants(filter) {
     const filteredRestaurants = this.restaurants.filter(r =>
       r.cuisine.includes(filter.cuisine || '') &&

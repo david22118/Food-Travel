@@ -1,5 +1,5 @@
 #city-input{
-    background-color:#778beb;
+    background-color:#778ca3;
     font-family: 'Lora', serif;
     font-size: 15px;
     color: white;
@@ -16,7 +16,7 @@
 
 #search-btn{
  font-size: 30px;
-      color: white;
+      color:#303952;
 }
 
 p{
@@ -46,6 +46,9 @@ background-color: #303952;
     border-radius: 12px;
 }
 
+#present{
+    border-bottom: 1px solid #000; 
+}
 #rating-list{
     border: 1px solid #000;
     border-radius: 12px;
@@ -122,3 +125,23 @@ background-color: #303952;
 label{
     color:  #303952;
 }
+
+.checkbox-blue-grey[type="checkbox"].filled-in:checked + span:not(.lever):after 
+{
+    border: 2px solid #607d8b;  
+    background-color: #607d8b;
+}
+
+
+/* label focus color */
+.input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
+    color: #303952 !important;
+   }
+
+/* label underline focus color */
+   .input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #303952 !important;
+    box-shadow: 0 1px 0 0 #303952 !important;
+   }
+
+
