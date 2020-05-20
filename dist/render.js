@@ -19,6 +19,7 @@ class Render {
     }
     
     renderTripsTitle(trips){
+        $("#trips-list").empty()
      for(let trip of trips){
         const addTitle= $(`<option value="${trip.title}">${trip.title}</option>`)
         $("#trips-list").append(addTitle)

@@ -46,16 +46,20 @@ $("#restaurants").on("click", "#add-restaurants", async function () {
    const trip = tripsManager.trips.find(c => c.title == tripTitle)
    const tripId= trip._id
    const restaurantsId= $(this).data().id
+   const isAded= trip.restaurants.some(r=>r._id==restaurantsId)
+   if (!isAded)
    await restaurantsManager.addRestaurantToTrip(restaurantsId,tripId)
    /* render.renderRestaurantsData(restaurantsManager.restaurants)  */
 
 })
 
-$("#restaurants").on("click", "#remove-restaurants", async function () {
-    const tripId = $(this).data().id
-
-    await removeTrip(tripId)
-    render.renderRestaurantsData(restaurantsManager.restaurants)
+$("#restaurants").on("click", "#remove-restaurants-trip", async function () {
+    const restaurantId = $(this).data().id
+    const tripTitle= $("#trips-list").val()
+    const trip = tripsManager.trips.find(c => c.title == tripTitle)
+    const newTrip =  await restaurantsManager.removeRestaurantFromTrip(restaurantId,trip._id)
+    console.log(newTrip)
+    /* render.renderRestaurantsData(restaurantsManager.restaurants) */
 })
 
 $("#create-trip-btn").on("click",async function(){
