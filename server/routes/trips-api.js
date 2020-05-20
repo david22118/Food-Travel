@@ -7,9 +7,11 @@ const Address = require('../model/address')
 const Rating = require('../model/rating')
 
 router.get('/trips', function (req, res) {
-    Trip.find({}, function (error, trips) {
-        res.send(trips)
-    })
+    Trip.find({})
+        .populate('restaurants')
+        .exec(function (error, trips) {
+            res.send(trips)
+        })
 })
 
 router.post('/trip', function (req, res) {
