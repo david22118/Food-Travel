@@ -46,6 +46,11 @@ option{
 
 }
 
+#trips-list{
+    border: 1px solid #000;
+    border-radius: 12px;
+
+}
 #discount{
     color: black;
     font-family: 'Lora', serif;

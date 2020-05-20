@@ -7,7 +7,7 @@ const Address = require('../model/address')
 const Rating = require('../model/rating')
 
 router.get('/trips', function (req, res) {
-    City.find({}, function (error, trips) {
+  Trip.find({}, function (error, trips) {
         res.send(trips)
     })
 })
