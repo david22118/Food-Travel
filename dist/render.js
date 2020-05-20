@@ -9,9 +9,13 @@ class Render {
         $('#restaurants').empty()
         $('#restaurants').append(newHTML)
     }
-
+     
     renderTripsData(trips) {
-        // code ..
+        const source = $('#trip-template').html()
+        const template = Handlebars.compile(source)
+        const newHTML = template({ trips})
+        $('#restaurants').empty()
+        $('#restaurants').append(newHTML)
     }
 
 }
