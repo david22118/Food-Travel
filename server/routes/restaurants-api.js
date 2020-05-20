@@ -53,7 +53,7 @@ router.post('/restaurant/:tripId', function (req, res) {
 router.delete('/restaurant/:restaurantId/:tripId', function (req, res) {
     const restaurantId = req.params.restaurantId
     const tripId = req.params.tripId
-    Trip.find({ _id: tripId }, function (trip) {
+    Trip.findById({ _id: ObjectId(tripId) }, function (error, trip) {
         const i = trip.restaurants.findIndex(r => r._id == restaurantId)
         trip.restaurants.splice(i, 1)
         trip.save(function (t) {

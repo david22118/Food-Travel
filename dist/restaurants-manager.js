@@ -10,7 +10,6 @@ class RestaurantsManager {
   async addRestaurantToTrip(restaurantId, tripId) {
     const restaurant = this.restaurants.find(r => r._id == restaurantId)
     const trip = await $.post(`restaurant/${tripId}`, restaurant)
-
   }
 
   filterRestaurants(filter) {
