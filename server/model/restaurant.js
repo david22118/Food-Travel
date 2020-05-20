@@ -5,6 +5,7 @@ const Rating = require('./rating').schema
 const Schema = mongoose.Schema;
 
 const RestaurantSchema = new Schema({
+    _id: String,
     restaurantName: String,
     location: Location,
     address: Address,
@@ -12,7 +13,7 @@ const RestaurantSchema = new Schema({
     photo: String,
     marketingOffer: String,
     cuisine: String,
-});
+}, { _id: false });
 
 const Restaurant = mongoose.model("Restaurant", RestaurantSchema);
 

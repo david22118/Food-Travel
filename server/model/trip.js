@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const TripSchema = new Schema({
     title: String,
-    restaurants: [{ type: Schema.Types.ObjectId, ref: 'Restaurant' }]
+    restaurants: [{ type: Schema.Types.String, ref: 'Restaurant' }]
 });
 
 const Trip = mongoose.model("Trip", TripSchema);
