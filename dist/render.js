@@ -10,13 +10,21 @@ class Render {
         $('#restaurants').append(newHTML)
     }
      
-    renderTripsData(trips) {
+    renderTripsData(restaurants) {
         const source = $('#trip-template').html()
         const template = Handlebars.compile(source)
-        const newHTML = template({ trips})
+        const newHTML = template({ restaurants})
         $('#restaurants').empty()
         $('#restaurants').append(newHTML)
     }
+    
+    renderTripsTitle(trips){
+     for(let trip of trips){
+        const addTitle= $(`<option value="${trip.title}">${trip.title}</option>`)
+        $("#trips-list").append(addTitle)
+     }   
+    }
+
 
 }
 
