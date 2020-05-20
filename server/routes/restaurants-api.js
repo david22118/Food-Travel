@@ -22,11 +22,7 @@ router.post('/restaurant/:tripId', function (req, res) {
     const tripId = req.params.tripId
     console.log(restaurantData)
     const newRestaurant = new Restaurant({
-
-    
-
         _id: restaurantData._id,
-
         restaurantName: restaurantData.restaurantName,
         location: new Location({
             longitude: restaurantData.location.longitude,
@@ -48,6 +44,7 @@ router.post('/restaurant/:tripId', function (req, res) {
         cuisine: restaurantData.cuisine
     })
     newRestaurant.save(function (error, restaurant) {
+        if (restaurant == null) restaurant = newRestaurant
         Trip.findById({ _id: ObjectId(tripId) }, function (error, trip) {
             trip.restaurants.push(restaurant)
             trip.save(function (error, t) {
@@ -59,15 +56,14 @@ router.post('/restaurant/:tripId', function (req, res) {
 router.delete('/restaurant/:restaurantId/:tripId', function (req, res) {
     const restaurantId = req.params.restaurantId
     const tripId = req.params.tripId
-    Trip.findById({ _id: ObjectId(tripId) }, function (error, trip) {
-        const i = trip.restaurants.findIndex(r => r._id == restaurantId)
-        trip.restaurants.splice(i, 1)
-
-        trip.save(function (error, trips) {
-            res.send(trips)
-
+    Trip.findById({ _id: ObjectId(tripId) })
+        .populate('restaurants')
+        .exec(function (error, trip) {
+            const i = trip.restaurants.findIndex(r => r._id == restaurantId)
+            trip.restaurants.splice(i, 1)
+            trip.save()
+            res.send(trip)
         })
-    })
 })
 
 function getCityId(cityName) {
@@ -87,7 +83,7 @@ function getCityLocationById(cityId) {
         qs: { google_place_id: cityId },
         headers: {
             'x-rapidapi-host': 'thefork.p.rapidapi.com',
-            'x-rapidapi-key': '9c978dd43cmsh1b3d31ae1936130p18cfafjsn625da2ea9f8a',
+            'x-rapidapi-key': '39c5ed6c70mshf2e72c919dd3b91p1c2712jsn5c485f184863',
             useQueryString: true
         }
     }
@@ -115,7 +111,7 @@ function getRestaurantsByLocation(location) {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "thefork.p.rapidapi.com",
-            "x-rapidapi-key": "9c978dd43cmsh1b3d31ae1936130p18cfafjsn625da2ea9f8a"
+            "x-rapidapi-key": "39c5ed6c70mshf2e72c919dd3b91p1c2712jsn5c485f184863"
         }
     }
     return new Promise((resolve, reject) => {

@@ -2,7 +2,7 @@ const render = new Render()
 const restaurantsManager = new RestaurantsManager()
 const tripsManager = new TripsManager()
 
-const loadTrips = async function(){
+const loadTrips = async function () {
     await tripsManager.getTrips()
     render.renderTripsTitle(tripsManager.trips)
 }
@@ -35,34 +35,34 @@ $('#filter-btn').on('click', function () {
 $("#Show-Trip-btn").on("click", async function () {
     await tripsManager.getTrips()
     const tripTitle = $("#trips-list").val()
-    const myTrip= tripsManager.trips.find(t=>t.title==tripTitle)
+    const myTrip = tripsManager.trips.find(t => t.title == tripTitle)
     console.log(myTrip)
-    render.renderTripsData(myTrip.restaurants) 
+    render.renderTripsData(myTrip.restaurants)
 })
 
 
 $("#restaurants").on("click", "#add-restaurants", async function () {
-   const tripTitle = $("#trips-list").val()
-   const trip = tripsManager.trips.find(c => c.title == tripTitle)
-   const tripId= trip._id
-   const restaurantsId= $(this).data().id
-   const isAded= trip.restaurants.some(r=>r._id==restaurantsId)
-   if (!isAded)
-   await restaurantsManager.addRestaurantToTrip(restaurantsId,tripId)
-   /* render.renderRestaurantsData(restaurantsManager.restaurants)  */
+    const tripTitle = $("#trips-list").val()
+    const trip = tripsManager.trips.find(c => c.title == tripTitle)
+    const tripId = trip._id
+    const restaurantsId = $(this).data().id
+    const isAded = trip.restaurants.some(r => r._id == restaurantsId)
+    if (!isAded)
+        await restaurantsManager.addRestaurantToTrip(restaurantsId, tripId)
+    /* render.renderRestaurantsData(restaurantsManager.restaurants)  */
 
 })
 
 $("#restaurants").on("click", "#remove-restaurants-trip", async function () {
     const restaurantId = $(this).data().id
-    const tripTitle= $("#trips-list").val()
+    const tripTitle = $("#trips-list").val()
     const trip = tripsManager.trips.find(c => c.title == tripTitle)
-    const newTrip =  await restaurantsManager.removeRestaurantFromTrip(restaurantId,trip._id)
+    const newTrip = await restaurantsManager.removeRestaurantFromTrip(restaurantId, trip._id)
     console.log(newTrip)
-    /* render.renderRestaurantsData(restaurantsManager.restaurants) */
+    render.renderTripsData(newTrip.restaurants)
 })
 
-$("#create-trip-btn").on("click",async function(){
+$("#create-trip-btn").on("click", async function () {
     const title = $("#trip-name").val()
     await tripsManager.addTrip(title)
     render.renderTripsTitle(tripsManager.trips)
