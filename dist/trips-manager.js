@@ -4,38 +4,16 @@ class TripsManager {
     }
 
     async getTrips() {
-        return this.trips
+        this.trips = await $.get(`trips`)
+        console.log(this.trips);
     }
-
-    async addTrip(trip) {
-        $.post()
-        this.trips.push(trip)
+    async addTrip(tripTitle) {
+        this.trips = await $.post('trip', { title: tripTitle })
     }
     async removeTrip(tripId) {
-       
-        this.trips.splice(tripId, 1)
+        this.trips = await $.ajax({
+            url: `trip/${tripId}`,
+            method: 'DELETE'
+        })
     }
-
-
-
-    async getDataFromDB(){
-        let restaurants = await $.get(`/trips`)
-        this.trips = cities
-   }
-   
-   
-   
-   saveRestaurant(restName){
-       const restaurant = this.trips.find(rest => rest.name == restName)
-       $.post('/restaurant', restaurant)
-   }
-   
-   
-   removeRestaurant(restName){
-       $.ajax({
-           url: `/restaurant/${restName}`,
-           type: 'DELETE'
-           
-       })
-   }
 } 
