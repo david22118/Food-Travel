@@ -2,6 +2,11 @@ const render = new Render()
 const restaurantsManager = new RestaurantsManager()
 const tripsManager = new TripsManager()
 
+const loadTrips = async function(){
+    await tripsManager.getTrips()
+    render.renderTripsTitle(tripsManager.trips)
+}
+loadTrips()
 
 const handleSearch = async function (cityName, filter) {
     //get restaurants then filter ...
@@ -27,17 +32,22 @@ $('#filter-btn').on('click', function () {
     render.renderRestaurantsData(filterdRestaurants)
 })
 
-$("#travel-btn").on("click", async function () {
+$("#Show-Trip-btn").on("click", async function () {
     await tripsManager.getTrips()
-    render.renderTripsData(tripsManager.trips)
+    const tripTitle = $("#trips-list").val()
+    const myTrip= tripsManager.trips.find(t=>t.title==tripTitle)
+    console.log(myTrip)
+    render.renderTripsData(myTrip.restaurants) 
 })
 
 
 $("#restaurants").on("click", "#add-restaurants", async function () {
-    const tripId = $(this).data().id
-    const trip = restaurantsManager.restaurants.find(c => c._id == tripId)
-    await TripsManager.addTrip(trip)
-    render.renderRestaurantsData(restaurantsManager.restaurants)
+   const tripTitle = $("#trips-list").val()
+   const trip = tripsManager.trips.find(c => c.title == tripTitle)
+   const tripId= trip._id
+   const restaurantsId= $(this).data().id
+   await restaurantsManager.addRestaurantToTrip(restaurantsId,tripId)
+   /* render.renderRestaurantsData(restaurantsManager.restaurants)  */
 
 })
 
@@ -48,7 +58,11 @@ $("#restaurants").on("click", "#remove-restaurants", async function () {
     render.renderRestaurantsData(restaurantsManager.restaurants)
 })
 
-
+$("#create-trip-btn").on("click",async function(){
+    const title = $("#trip-name").val()
+    await tripsManager.addTrip(title)
+    render.renderTripsTitle(tripsManager.trips)
+})
 
 
 
