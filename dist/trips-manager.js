@@ -8,9 +8,11 @@ class TripsManager {
     }
 
     async addTrip(trip) {
+        $.post()
         this.trips.push(trip)
     }
     async removeTrip(tripId) {
+       
         this.trips.splice(tripId, 1)
     }
 } 

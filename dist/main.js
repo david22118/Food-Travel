@@ -27,8 +27,26 @@ $('#filter-btn').on('click', function () {
     render.renderRestaurantsData(filterdRestaurants)
 })
 
+$("#travel-btn").on("click",function(){
+await tripsManager.getTrips()
+render.renderTripsData(tripsManager.trips)
+})
 
 
+$("#restaurants").on("click","#add-restaurants",function(){
+const tripId = $(this).data().id
+const trip= restaurantsManager.restaurants.find(c=>c._id==tripId)
+await TripsManager.addTrip(trip)
+render.renderRestaurantsData(restaurantsManager.restaurants)
+
+})
+
+$("#restaurants").on("click","#remove-restaurants",function(){
+const tripId = $(this).data().id
+
+await removeTrip(tripId)
+render.renderRestaurantsData(restaurantsManager.restaurants)
+})
 
 
 

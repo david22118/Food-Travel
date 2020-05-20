@@ -34,13 +34,13 @@ option{
 }
 
 
-#cuisines{
+#cuisines-list{
 
     border: 1px solid #000;
     border-radius: 12px;
 }
 
-#rating{
+#rating-list{
     border: 1px solid #000;
     border-radius: 12px;
 
@@ -51,7 +51,7 @@ option{
     font-family: 'Lora', serif;
 }
 
-#discount-box{
+#discountChecked{
     border: 1px solid #000;
     
 }
@@ -59,7 +59,11 @@ option{
 #pecture{
 
     height: 200px;
-    width: 200px;
+    width: 250px;
+}
+
+#restaurants{
+    border-top:0.5px solid #000;
 }
 /* body{
     
