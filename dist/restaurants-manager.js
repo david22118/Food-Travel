@@ -13,7 +13,7 @@ class RestaurantsManager {
     const trip = await $.post(`restaurant/${tripId}`, restaurant)
   }
    async removeRestaurantFromTrip(restaurantId,tripId){
-    return await $.ajax({
+     await $.ajax({
       url: `/restaurant/${restaurantId}/${tripId}`,
       method: "DELETE",
     });
