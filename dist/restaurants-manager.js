@@ -7,6 +7,14 @@ class RestaurantsManager {
     this.restaurants = await $.get(`/restaurants/${cityName}`)
   }
 
+  async addRestaurantToTrip(restaurantId, tripId) {
+    const restaurant = this.restaurants.find(r => r._id == restaurantId)
+    console.log(restaurant)
+
+    const trip = await $.post(`restaurant/${tripId}`, restaurant)
+     console.log(trip)
+  }
+
   filterRestaurants(filter) {
     const filteredRestaurants = this.restaurants.filter(r =>
       r.cuisine.includes(filter.cuisine || '') &&
@@ -17,6 +25,7 @@ class RestaurantsManager {
       return filteredRestaurants.filter(r => r.marketingOffer)
     return filteredRestaurants
   }
+
 
 }
 

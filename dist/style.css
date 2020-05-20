@@ -1,11 +1,13 @@
 #city-input{
-    background-color:#4bcffa;
+    background-color:#778beb;
     font-family: 'Lora', serif;
     font-size: 15px;
     color: white;
     font-weight: bold;
     
 }
+
+
 #clear-city-input{
     font-weight: bold;
    
@@ -14,6 +16,7 @@
 
 #search-btn{
  font-size: 30px;
+      color: white;
 }
 
 p{
@@ -30,9 +33,12 @@ option{
 
 #filter{
     font-family: 'Lora', serif;
-    background-color: #0fbcf9;
+   
 }
 
+#filter-btn{
+background-color: #303952;
+}
 
 #cuisines-list{
 
@@ -49,6 +55,7 @@ option{
 #trips-list{
     border: 1px solid #000;
     border-radius: 12px;
+    font-family: 'Lora', serif;
 
 }
 #discount{
@@ -70,6 +77,23 @@ option{
 #restaurants{
     border-top:0.5px solid #000;
 }
+#trip-name{
+    color: black;
+    font-family: 'Lora', serif;
+
+}
+
+#create-trip-btn{
+    font-family: 'Lora', serif;
+    background-color: #303952;
+}
+
+
+
+#Show-Trip-btn{
+    font-family: 'Lora', serif;
+    background-color: #303952;
+}
 /* body{
     
     background-image: url("pecture2.jpg");
@@ -81,3 +105,20 @@ option{
     width: 100%;
 
 } */
+
+#remove-restaurants{
+    background-color: #303952;
+}
+
+#add-restaurants{
+    background-color: #303952;
+}
+
+#remove-restaurants-trip{
+    background-color: #303952;
+}
+
+
+label{
+    color:  #303952;
+}

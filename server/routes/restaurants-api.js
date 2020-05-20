@@ -20,12 +20,13 @@ router.get('/restaurants/:cityName', async function (req, res) {
 router.post('/restaurant/:tripId', function (req, res) {
     const restaurantData = req.body
     const tripId = req.params.tripId
+    console.log(restaurantData)
     const newRestaurant = new Restaurant({
         restaurantName: restaurantData.restaurantName,
         location: new Location({
             longitude: restaurantData.location.longitude,
             latitude: restaurantData.location.latitude,
-            cityId: restaurantData.location.cityId
+           // cityId: restaurantData.location.cityId
         }),
         address: new Address({
             street: restaurantData.address.street,
@@ -95,7 +96,6 @@ function getCityLocationById(cityId) {
                 longitude: coordinates.longitude,
                 cityId: cityId
             })
-            console.log(location);
             return resolve(location)
         })
     })

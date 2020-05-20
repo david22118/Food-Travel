@@ -7,17 +7,21 @@ const Address = require('../model/address')
 const Rating = require('../model/rating')
 
 router.get('/trips', function (req, res) {
-  Trip.find({}, function (error, trips) {
+    Trip.find({}, function (error, trips) {
         res.send(trips)
     })
 })
 
 router.post('/trip', function (req, res) {
+    const myTitle = req.body.title
     const trip = new Trip({
+        title: myTitle,
         restaurants: []
     })
     trip.save(function (error, t) {
-        res.send(t)
+        Trip.find({}, function (error, trips) {
+            res.send(trips)
+        })
     })
 })
 
