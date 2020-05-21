@@ -143,5 +143,15 @@ label{
     border-bottom: 1px solid #303952 !important;
     box-shadow: 0 1px 0 0 #303952 !important;
    }
+   #map {
+    height:500px;
+    width: 50%;
+  }
+
+   html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 
 
