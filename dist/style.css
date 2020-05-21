@@ -144,6 +144,16 @@ label{
     border-bottom: 1px solid #303952 !important;
     box-shadow: 0 1px 0 0 #303952 !important;
    }
+   #map {
+    height:500px;
+    width: 50%;
+  }
+
+   html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 
    #img-load {
     background: url("https://www.demilked.com/magazine/wp-content/uploads/2016/06/gif-animations-replace-loading-screen-14.gif") center center;
