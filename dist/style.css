@@ -79,6 +79,7 @@ background-color: #303952;
 
 #restaurants{
     border-top:0.5px solid #000;
+    
 }
 #trip-name{
     color: black;
@@ -154,4 +155,9 @@ label{
     padding: 0;
   }
 
-
+   #img-load {
+    background: url("https://www.demilked.com/magazine/wp-content/uploads/2016/06/gif-animations-replace-loading-screen-14.gif") center center;
+    background-repeat: no-repeat;
+    background-size: 300px 200px;
+    height: 300px;
+  }

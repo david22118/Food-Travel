@@ -1,7 +1,7 @@
 const render = new Render()
 const restaurantsManager = new RestaurantsManager()
 const tripsManager = new TripsManager()
-
+$('#img-load').hide();
 const loadTrips = async function () {
     await tripsManager.getTrips()
     render.renderTripsTitle(tripsManager.trips)
@@ -11,6 +11,12 @@ loadTrips()
 
 
 const handleSearch = async function (cityName, filter) {
+
+    $('#restaurants').empty()
+    $('#img-load').show();
+    await restaurantsManager.getRestaurantsData(cityName)
+    $('#img-load').hide();
+
     function addMarker(coords) {
         let mrk = new google.maps.Marker({
             position: coords,
@@ -91,11 +97,11 @@ $("#restaurants").on("click", "#add-restaurants", async function () {
     const trip = tripsManager.trips.find(c => c.title == tripTitle)
     const tripId = trip._id
     const restaurantsId = $(this).data().id
-    const isAded = trip.restaurants.some(r => r._id == restaurantsId)
-    if (!isAded)
+    const isAded = trip.restaurants.findIndex(r => r._id == restaurantsId)
+    if (isAded == -1) {
         await restaurantsManager.addRestaurantToTrip(restaurantsId, tripId)
-    /* render.renderRestaurantsData(restaurantsManager.restaurants)  */
-
+        await tripsManager.getTrips()
+    }
 })
 
 $("#restaurants").on("click", "#remove-restaurants-trip", async function () {
@@ -112,9 +118,6 @@ $("#create-trip-btn").on("click", async function () {
     await tripsManager.addTrip(title)
     render.renderTripsTitle(tripsManager.trips)
 })
-
-
-
 
 let y
 let x
@@ -180,4 +183,5 @@ function getLocation(addrees) {
         }
     })
 }
+
 
