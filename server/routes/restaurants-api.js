@@ -83,7 +83,7 @@ function getCityLocationById(cityId) {
         qs: { google_place_id: cityId },
         headers: {
             'x-rapidapi-host': 'thefork.p.rapidapi.com',
-            'x-rapidapi-key': '39c5ed6c70mshf2e72c919dd3b91p1c2712jsn5c485f184863',
+            'x-rapidapi-key': 'a946d25d24mshcd7e50d8ad486e1p1677e2jsn82023255cc83',
             useQueryString: true
         }
     }
@@ -111,7 +111,7 @@ function getRestaurantsByLocation(location) {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "thefork.p.rapidapi.com",
-            "x-rapidapi-key": "39c5ed6c70mshf2e72c919dd3b91p1c2712jsn5c485f184863"
+            "x-rapidapi-key": "a946d25d24mshcd7e50d8ad486e1p1677e2jsn82023255cc83"
         }
     }
     return new Promise((resolve, reject) => {
